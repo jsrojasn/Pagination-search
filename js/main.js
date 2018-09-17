@@ -85,7 +85,7 @@ search.addEventListener("click",function () {
                 }
             };
         }
-        if (list[i].children[0].children[1].innerHTML.includes(input.value)  || list[i].children[0].children[2].innerHTML.includes(input.value)) {
+        if (list[i].children[0].children[1].innerHTML.toLowerCase().includes(input.value)  || list[i].children[0].children[2].innerHTML.toLowerCase().includes(input.value)) {
             searchList.push(list[i])
         }
     }
