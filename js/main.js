@@ -71,7 +71,7 @@ input.addEventListener('keyup', function (e) {
 search.addEventListener("click",function () {
     let searchList = []
     for (let i = 0; i < list.length; i++) {
-        if (list[i].children[0].children[1].innerHTML.includes(input.value) || list[i].children[0].children[2].innerHTML.includes(input.value)) {
+        if (list[i].children[0].children[1].innerHTML.indexOf(input.value) != -1 || list[i].children[0].children[2].innerHTML.indexOf(input.value) != -1 ) {
             searchList.push(list[i])
         }
     }
