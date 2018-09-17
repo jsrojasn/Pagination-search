@@ -58,7 +58,7 @@ let appendPageLinks = function (list) {
 input.addEventListener('keyup', function (e) {
     let filteredList = []
     for (let i = 0; i < list.length; i++) {
-        if (list[i].children[0].children[1].innerHTML.includes(e.target.value) || list[i].children[0].children[2].innerHTML.includes(e.target.value) ) {
+        if (list[i].children[0].children[1].innerHTML.includes(e.target.value.toLowerCase()) || list[i].children[0].children[2].innerHTML.includes(e.target.value.toLowerCase()) ) {
             filteredList.push(list[i])
         }
     }  
@@ -71,21 +71,7 @@ input.addEventListener('keyup', function (e) {
 search.addEventListener("click",function () {
     let searchList = []
     for (let i = 0; i < list.length; i++) {
-        if (!String.prototype.includes) {
-            String.prototype.includes = function (search, start) {
-                'use strict';
-                if (typeof start !== 'number') {
-                    start = 0;
-                }
-
-                if (start + search.length > this.length) {
-                    return false;
-                } else {
-                    return this.indexOf(search, start) !== -1;
-                }
-            };
-        }
-        if (list[i].children[0].children[1].innerHTML.toLowerCase().includes(input.value)  || list[i].children[0].children[2].innerHTML.toLowerCase().includes(input.value)) {
+        if (list[i].children[0].children[1].innerHTML.includes(input.value.toLowerCase())  || list[i].children[0].children[2].innerHTML.includes(input.value.toLowerCase())) {
             searchList.push(list[i])
         }
     }
