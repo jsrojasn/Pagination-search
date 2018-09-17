@@ -71,7 +71,21 @@ input.addEventListener('keyup', function (e) {
 search.addEventListener("click",function () {
     let searchList = []
     for (let i = 0; i < list.length; i++) {
-        if (list[i].children[0].children[1].innerHTML.indexOf(input.value) != -1 || list[i].children[0].children[2].innerHTML.indexOf(input.value) != -1 ) {
+        if (!String.prototype.includes) {
+            String.prototype.includes = function (search, start) {
+                'use strict';
+                if (typeof start !== 'number') {
+                    start = 0;
+                }
+
+                if (start + search.length > this.length) {
+                    return false;
+                } else {
+                    return this.indexOf(search, start) !== -1;
+                }
+            };
+        }
+        if (list[i].children[0].children[1].innerHTML.includes(input.value)  || list[i].children[0].children[2].innerHTML.includes(input.value)) {
             searchList.push(list[i])
         }
     }
@@ -84,6 +98,8 @@ search.addEventListener("click",function () {
 //Use the pagination when the page is load
 document.addEventListener("load", showPage(1,list))
 document.addEventListener("load", appendPageLinks( list))
+
+
 
 
 
